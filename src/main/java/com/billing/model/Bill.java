@@ -14,12 +14,12 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int Bill_Id;
-	private Date DueDate;
-	private Double MinimumPayment;
+	private int bill_Id;
+	private Date dueDate;
+	private Double minimumPayment;
 	private Date createdDate;
-	private Double Balance;
-	private Boolean Status;
+	private Double balance;
+	private Boolean status;
 	public int getId() {
 		return id;
 	}
@@ -27,22 +27,22 @@ public class Bill {
 		this.id = id;
 	}
 	public int getBill_Id() {
-		return Bill_Id;
+		return bill_Id;
 	}
 	public void setBill_Id(int bill_Id) {
-		Bill_Id = bill_Id;
+		this.bill_Id = bill_Id;
 	}
 	public Date getDueDate() {
-		return DueDate;
+		return dueDate;
 	}
 	public void setDueDate(Date dueDate) {
-		DueDate = dueDate;
+		this.dueDate = dueDate;
 	}
 	public Double getMinimumPayment() {
-		return MinimumPayment;
+		return minimumPayment;
 	}
 	public void setMinimumPayment(Double minimumPayment) {
-		MinimumPayment = minimumPayment;
+		this.minimumPayment = minimumPayment;
 	}
 	public Date getCreatedDate() {
 		return createdDate;
@@ -51,22 +51,23 @@ public class Bill {
 		this.createdDate = createdDate;
 	}
 	public Double getBalance() {
-		return Balance;
+		return balance;
 	}
 	public void setBalance(Double balance) {
-		Balance = balance;
+		this.balance = balance;
 	}
 	public Boolean getStatus() {
-		return Status;
+		return status;
 	}
 	public void setStatus(Boolean status) {
-		Status = status;
+		this.status = status;
 	}
 	@Override
 	public String toString() {
-		return "Bill [id=" + id + ", Bill_Id=" + Bill_Id + ", DueDate=" + DueDate + ", MinimumPayment=" + MinimumPayment
-				+ ", createdDate=" + createdDate + ", Balance=" + Balance + ", Status=" + Status + "]";
+		return "Bill [id=" + id + ", bill_Id=" + bill_Id + ", dueDate=" + dueDate + ", minimumPayment=" + minimumPayment
+				+ ", createdDate=" + createdDate + ", balance=" + balance + ", status=" + status + "]";
 	}
+	
 	
 	
 
