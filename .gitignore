@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+<<<<<<< HEAD
+=======
+
+
+.mvn/
+mvnw
+mvnw.cmd
+src/main/resources/META-INF/
+
+>>>>>>> 6f56f7d9bf62c91e1f765e25b071a9190e7e2e34
