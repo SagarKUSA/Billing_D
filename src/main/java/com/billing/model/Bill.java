@@ -1,11 +1,13 @@
 package com.billing.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,23 +16,28 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int bill_Id;
+	private int billId;
 	private Date dueDate;
 	private Double minimumPayment;
 	private Date createdDate;
 	private Double balance;
 	private Boolean status;
-	public int getId() {
+	
+	
+	@OneToMany(mappedBy = "billId")
+	private List<PaymentDetails> paymentDetails;
+	
+     public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
 	public int getBill_Id() {
-		return bill_Id;
+		return billId;
 	}
-	public void setBill_Id(int bill_Id) {
-		this.bill_Id = bill_Id;
+	public void setBill_Id(int billId) {
+		this.billId = billId;
 	}
 	public Date getDueDate() {
 		return dueDate;
@@ -62,9 +69,16 @@ public class Bill {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
+	
+	public List<PaymentDetails> getPaymentDetails() {
+		return paymentDetails;
+	}
+	public void setPaymentDetails(List<PaymentDetails> paymentDetails) {
+		this.paymentDetails = paymentDetails;
+	}
 	@Override
 	public String toString() {
-		return "Bill [id=" + id + ", bill_Id=" + bill_Id + ", dueDate=" + dueDate + ", minimumPayment=" + minimumPayment
+		return "Bill [id=" + id + ", bill_Id=" + billId + ", dueDate=" + dueDate + ", minimumPayment=" + minimumPayment
 				+ ", createdDate=" + createdDate + ", balance=" + balance + ", status=" + status + "]";
 	}
 	

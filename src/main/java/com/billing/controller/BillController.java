@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.billing.model.Bill;
+import com.billing.model.PaymentDetails;
 import com.billing.service.BillService;
 
 @RestController
 public class BillController {
 	@Autowired
     private BillService billService;
+	
 
 	@PostMapping("/addBill")
 public Bill generateBill(@RequestBody Bill bill) {
