@@ -49,7 +49,8 @@ return bill1;
 
 	@PutMapping("/editBill")
 public Bill updataeBill(@RequestBody Bill bill) {
-		Bill bill1 = billService.generateBill(bill);
+		
+		Bill bill1 = billService.updataeBill(bill);
 		
 		if(bill1.getPaymentDetails() == null) {
 			

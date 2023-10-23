@@ -1,4 +1,4 @@
-package com.billing.DT;
+package com.billing.DTO;
 
 public class ApiResponseDto {
 
