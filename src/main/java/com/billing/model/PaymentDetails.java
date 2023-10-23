@@ -15,20 +15,23 @@ public class PaymentDetails {
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	private int id;
 	private int billId;
-	private Date paidDate;
-	private double amount;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public int getBillId() {
 		return billId;
 	}
 	public void setBillId(int billId) {
 		this.billId = billId;
 	}
+	private Date paidDate;
+	private double amount;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	public Date getPaidDate() {
 		return paidDate;
 	}

@@ -33,10 +33,11 @@ public class Bill {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getBill_Id() {
+	
+	public int getBillId() {
 		return billId;
 	}
-	public void setBill_Id(int billId) {
+	public void setBillId(int billId) {
 		this.billId = billId;
 	}
 	public Date getDueDate() {
