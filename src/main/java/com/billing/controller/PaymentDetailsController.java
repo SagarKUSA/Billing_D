@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.billing.model.Bill;
 import com.billing.model.PaymentDetails;
 import com.billing.service.PaymentDetailsService;
 
@@ -46,4 +48,13 @@ public class PaymentDetailsController {
 	 public void deletePayment(@PathVariable ("id") Integer id) {
 		 detailsService.deletePayment(id);
 	 }
+	 @GetMapping("/paymentByByPage")
+	 public List<PaymentDetails> getBillByPage(@RequestParam (defaultValue = "0" )Integer pageNumber, 
+	 		                        @RequestParam (defaultValue = "100") Integer pageSize,
+	 		                        @RequestParam (defaultValue = "billId")String sortBy){
+	 	
+	 	List<PaymentDetails> paymentByByPage = detailsService.getAllBills(pageNumber, pageSize , sortBy);
+	 	
+	 	return paymentByByPage;
+}
 }

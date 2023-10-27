@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.billing.exception.ResourceNotFoundException;
@@ -79,6 +80,14 @@ return get;
 public void deleteBill(@PathVariable ("id") Integer id) {
 	billService.deleteBill(id);
 }
-
-
+@GetMapping("/billByPage")
+public List<Bill> getBillByPage(@RequestParam (defaultValue = "0" )Integer pageNumber, 
+		                        @RequestParam (defaultValue = "100") Integer pageSize,
+		                        @RequestParam (defaultValue = "status")String sortBy){
+	
+	List<Bill> billByPage = billService.getAllBills(pageNumber, pageSize , sortBy);
+	
+	return billByPage;
+	
+}
 }
