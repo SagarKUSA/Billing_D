@@ -49,11 +49,11 @@ public class PaymentDetailsController {
 		 detailsService.deletePayment(id);
 	 }
 	 @GetMapping("/paymentByByPage")
-	 public List<PaymentDetails> getBillByPage(@RequestParam (defaultValue = "0" )Integer pageNumber, 
+	 public List<PaymentDetails> getPaymentByPage(@RequestParam (defaultValue = "0" )Integer pageNumber, 
 	 		                        @RequestParam (defaultValue = "100") Integer pageSize,
 	 		                        @RequestParam (defaultValue = "billId")String sortBy){
 	 	
-	 	List<PaymentDetails> paymentByByPage = detailsService.getAllBills(pageNumber, pageSize , sortBy);
+	 	List<PaymentDetails> paymentByByPage = detailsService.getAllPayments(pageNumber, pageSize , sortBy);
 	 	
 	 	return paymentByByPage;
 }

@@ -17,5 +17,5 @@ public interface PaymentDetailsService {
 	 
 	 public void deletePayment(Integer id);
 	 
-	 public List<PaymentDetails> getAllBills(Integer pageNumber , Integer pageSize , String sortBy);
+	 public List<PaymentDetails> getAllPayments(Integer pageNumber , Integer pageSize , String sortBy);
 }

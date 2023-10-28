@@ -53,7 +53,7 @@ public class PaymentDetailsServiceImpl implements PaymentDetailsService{
 	}
 
 	@Override
-public List<PaymentDetails> getAllBills(Integer pageNumber, Integer pageSize , String sortBy) {
+public List<PaymentDetails> getAllPayments(Integer pageNumber, Integer pageSize , String sortBy) {
 		
 		Pageable paging = PageRequest.of(pageNumber, pageSize , Sort.by("billId").ascending());
 		
