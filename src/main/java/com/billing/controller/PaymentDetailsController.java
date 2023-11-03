@@ -14,36 +14,62 @@ import org.springframework.web.bind.annotation.RestController;
 import com.billing.model.PaymentDetails;
 import com.billing.service.PaymentDetailsService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 public class PaymentDetailsController {
-    
+
 	@Autowired
 	private PaymentDetailsService detailsService;
-	
+
 	@PostMapping("/doPayment")
-	 public PaymentDetails doPayment (@RequestBody PaymentDetails details) {
+	@ApiOperation(value = "Request to add payment")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Created"),
+			@ApiResponse(code = 400, message = "Invalid Request"),
+			@ApiResponse(code = 500, message = "Internal Error") })
+	public PaymentDetails doPayment(@RequestBody PaymentDetails details) {
 		PaymentDetails payment = detailsService.doPayment(details);
 		return payment;
-	 }
-	
+	}
+
 	@GetMapping("/getPayment/{id}")
-	public PaymentDetails getPayment (@PathVariable ("id") Integer id) {
+	@ApiOperation(value = "Request to get payment by id")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok"),
+			@ApiResponse(code = 404, message = "Resource Not Found"),
+			@ApiResponse(code = 500, message = "Internal Error") })
+	public PaymentDetails getPayment(@PathVariable("id") Integer id) {
 		PaymentDetails details = detailsService.getPayment(id);
 		return details;
 	}
-	 
+
 	@GetMapping("/getAllPayments")
-	 public List<PaymentDetails> getAllPayments(){
-		List<PaymentDetails> getAll= detailsService.getAllPayments();
+	@ApiOperation(value = "Request to get all payment")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok"),
+			@ApiResponse(code = 404, message = "Resource Not Found"),
+			@ApiResponse(code = 500, message = "Internal Error") })
+	public List<PaymentDetails> getAllPayments() {
+		List<PaymentDetails> getAll = detailsService.getAllPayments();
 		return getAll;
-	 }
-	 @PutMapping("/updatePayment")
-	 public PaymentDetails updatePayment (@RequestBody PaymentDetails details) {
-		PaymentDetails update= detailsService.updatePayment(details);
+	}
+
+	@PutMapping("/updatePayment")
+	@ApiOperation(value = "Request to update payment")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok"),
+			@ApiResponse(code = 404, message = "Resource Not Found"),
+			@ApiResponse(code = 500, message = "Internal Error")})
+	public PaymentDetails updatePayment(@RequestBody PaymentDetails details) {
+		PaymentDetails update = detailsService.updatePayment(details);
 		return update;
-	 }
-	 @DeleteMapping("/deltePayment/{id}")
-	 public void deletePayment(@PathVariable ("id") Integer id) {
-		 detailsService.deletePayment(id);
-	 }
+	}
+
+	@DeleteMapping("/deletePayment/{id}")
+	@ApiOperation(value = "Request to delete payment by id")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok"),
+			@ApiResponse(code = 404, message = "Resource Not Found"),
+			@ApiResponse(code = 500, message = "Internal Error")})
+	public void deletePayment(@PathVariable("id") Integer id) {
+		detailsService.deletePayment(id);
+	}
 }
