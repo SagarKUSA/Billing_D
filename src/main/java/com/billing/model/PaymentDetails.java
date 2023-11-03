@@ -15,6 +15,7 @@ public class PaymentDetails {
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	private int id;
 	private int billId;
+	
 	public int getBillId() {
 		return billId;
 	}

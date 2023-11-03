@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.billing.model.Bill;
 import com.billing.model.PaymentDetails;
 import com.billing.service.PaymentDetailsService;
 
@@ -58,7 +60,7 @@ public class PaymentDetailsController {
 	@ApiOperation(value = "Request to update payment")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok"),
 			@ApiResponse(code = 404, message = "Resource Not Found"),
-			@ApiResponse(code = 500, message = "Internal Error")})
+			@ApiResponse(code = 500, message = "Internal Error") })
 	public PaymentDetails updatePayment(@RequestBody PaymentDetails details) {
 		PaymentDetails update = detailsService.updatePayment(details);
 		return update;
@@ -68,8 +70,21 @@ public class PaymentDetailsController {
 	@ApiOperation(value = "Request to delete payment by id")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok"),
 			@ApiResponse(code = 404, message = "Resource Not Found"),
-			@ApiResponse(code = 500, message = "Internal Error")})
+			@ApiResponse(code = 500, message = "Internal Error") })
 	public void deletePayment(@PathVariable("id") Integer id) {
 		detailsService.deletePayment(id);
+	}
+
+	@GetMapping("/paymentByByPage")@ApiOperation(value = "Request to get all payments in pages")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok"),
+			@ApiResponse(code = 404, message = "Resource Not Found"),
+			@ApiResponse(code = 500, message = "Internal Error") })
+	public List<PaymentDetails> getPaymentByPage(@RequestParam(defaultValue = "0") Integer pageNumber,
+			@RequestParam(defaultValue = "100") Integer pageSize,
+			@RequestParam(defaultValue = "billId") String sortBy) {
+
+		List<PaymentDetails> paymentByByPage = detailsService.getAllPayments(pageNumber, pageSize, sortBy);
+
+		return paymentByByPage;
 	}
 }
